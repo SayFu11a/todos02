@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import TodoInput from './components/TodoInput';
 import TodoList from './components/TodoList';
 import { Todo } from './types';
+import './App.css';
 
 const App: React.FC = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
@@ -35,11 +36,13 @@ const App: React.FC = () => {
       <h1>todos</h1>
       <TodoInput addTodo={addTodo} />
       <TodoList todos={filteredTodos} toggleTodo={toggleTodo} />
-      <div>
+      <div className="footer">
         <span>{todos.filter(todo => !todo.completed).length} items left</span>
-        <button onClick={() => setFilter('all')}>All</button>
-        <button onClick={() => setFilter('active')}>Active</button>
-        <button onClick={() => setFilter('completed')}>Completed</button>
+        <div className="filters">
+          <button className={filter === 'all' ? 'selected' : ''} onClick={() => setFilter('all')}>All</button>
+          <button className={filter === 'active' ? 'selected' : ''} onClick={() => setFilter('active')}>Active</button>
+          <button className={filter === 'completed' ? 'selected' : ''} onClick={() => setFilter('completed')}>Completed</button>
+        </div>
         <button onClick={clearCompleted}>Clear completed</button>
       </div>
     </div>

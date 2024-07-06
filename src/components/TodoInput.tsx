@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './TodoInput.css';
 
 interface Props {
   addTodo: (text: string) => void;
@@ -16,7 +17,7 @@ const TodoInput: React.FC<Props> = ({ addTodo }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="todo-input">
       <input
         type="text"
         value={text}

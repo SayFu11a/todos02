@@ -1,6 +1,7 @@
 import React from 'react';
 import { Todo } from '../types';
 import TodoItem from './TodoItem';
+import './TodoList.css';
 
 interface Props {
   todos: Todo[];
@@ -8,7 +9,7 @@ interface Props {
 }
 
 const TodoList: React.FC<Props> = ({ todos, toggleTodo }) => (
-  <ul>
+  <ul className="todo-list">
     {todos.map(todo => (
       <TodoItem key={todo.id} todo={todo} toggleTodo={toggleTodo} />
     ))}
